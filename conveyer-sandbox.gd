@@ -4,7 +4,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
-var red_bannana_scene= load("res://Red-bannana.tscn")
+var red_bannana_scene = load("res://Objects/Bannas/Red-bannana.tscn")
 
 
 
