@@ -6,14 +6,12 @@ extends Area2D
 
 var push_speed = 20
 
-enum Directions {up, right, down, left}
-export var direction = Directions.right
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+# warning-ignore:unused_argument
 func _process(delta):
 	var bodies = get_overlapping_bodies()
 	for body in bodies:
@@ -21,5 +19,8 @@ func _process(delta):
 			move_body(body)
 
 func move_body(body: RigidBody2D):
-	body.apply_central_impulse(Vector2.RIGHT * push_speed)
+	var heading_vector = Vector2(cos(rotation), sin(rotation)) 
+	body.apply_central_impulse(
+	heading_vector * push_speed
+	)
 	

@@ -9,6 +9,7 @@
 extents = Vector2( 6.25, 6.639 )
 
 [node name="conveyer-belt" type="Area2D"]
+z_index = -1
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
