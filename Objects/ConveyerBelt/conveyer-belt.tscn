@@ -11,13 +11,13 @@ extents = Vector2( 6.25, 6.639 )
 [node name="conveyer-belt" type="Area2D"]
 z_index = -1
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 10.24, 9.64 )
 shape = SubResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="TextureRect" type="TextureRect" parent="."]
 material = ExtResource( 2 )

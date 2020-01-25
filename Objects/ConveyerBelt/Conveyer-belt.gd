@@ -19,8 +19,8 @@ func _process(delta):
 			move_body(body)
 
 func move_body(body: RigidBody2D):
-	var heading_vector = Vector2(cos(rotation), sin(rotation)) 
+	var heading_vector = Vector2(cos(global_rotation), sin(global_rotation)) 
 	body.apply_central_impulse(
-	heading_vector * push_speed
+		heading_vector * push_speed
 	)
 	

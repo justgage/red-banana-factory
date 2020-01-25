@@ -1,17 +1,12 @@
-extends KinematicBody2D
+extends RigidBody2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+signal blow_up(body)
 
-var velocity = Vector2.ZERO;
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
-	velocity = velocity * 0.9;
-	move_and_collide(velocity);
-	pass;
+func _on_Timer_timeout():
+	var bodies = $Area2D.get_overlapping_bodies()
+	for body in bodies:
+		var blow_up_dir =  (body.position - position)* 20;
+		if body is RigidBody2D:
+			body.apply_central_impulse(blow_up_dir)
+		
+	emit_signal("blow_up", self)

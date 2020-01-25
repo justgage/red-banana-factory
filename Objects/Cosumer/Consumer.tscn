@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Objects/Cosumer/Consumer.gd" type="Script" id=1]
+[ext_resource path="res://Objects/Cosumer/ConsumerTop.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Cosumer/ConsumerFull.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 5.69586, 64 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32, 64 )
+
+[node name="Consumer" type="RigidBody2D"]
+mass = 10.6592
+gravity_scale = 0.0
+linear_damp = 10.0
+script = ExtResource( 1 )
+
+[node name="ConsumerTop" type="Sprite" parent="."]
+rotation = -1.57079
+z_index = 2
+texture = ExtResource( 2 )
+
+[node name="ConsumerFull" type="Sprite" parent="."]
+rotation = -1.57079
+texture = ExtResource( 3 )
+
+[node name="Left" type="CollisionShape2D" parent="."]
+position = Vector2( -55.7662, 0 )
+shape = SubResource( 3 )
+
+[node name="Top" type="CollisionShape2D" parent="."]
+position = Vector2( 0.966064, -57.1156 )
+rotation = 1.57079
+shape = SubResource( 3 )
+
+[node name="Bottom" type="CollisionShape2D" parent="."]
+position = Vector2( 0.966064, 57.1156 )
+rotation = 1.57079
+shape = SubResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( -7.28321, -7.62939e-06 )
+scale = Vector2( 0.600001, 0.72 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -32, 0 )
+shape = SubResource( 2 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
