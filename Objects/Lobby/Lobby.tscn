@@ -1,0 +1,141 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Objects/Lobby/ServerManager.gd" type="Script" id=1]
+[ext_resource path="res://Objects/Lobby/Lobby.gd" type="Script" id=2]
+
+[node name="LobbyUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = 25.0
+margin_right = -25.0
+margin_bottom = -25.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConnectedStatus" type="Label" parent="VBox"]
+margin_right = 974.0
+margin_bottom = 14.0
+text = "Not Connected."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="VBox"]
+margin_top = 18.0
+margin_right = 974.0
+margin_bottom = 550.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ServerTab" type="Tabs" parent="VBox/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Vbox" type="VBoxContainer" parent="VBox/TabContainer/ServerTab"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IpAddressLabel" type="Label" parent="VBox/TabContainer/ServerTab/Vbox"]
+margin_right = 966.0
+margin_bottom = 31.0
+text = "Your IP addresses:
+(Click to copy to clipboard)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AddressesContainer" type="VBoxContainer" parent="VBox/TabContainer/ServerTab/Vbox"]
+margin_top = 35.0
+margin_right = 966.0
+margin_bottom = 472.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Refresh" type="Button" parent="VBox/TabContainer/ServerTab/Vbox"]
+margin_top = 476.0
+margin_right = 966.0
+margin_bottom = 496.0
+text = "Refresh"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClientTab" type="Tabs" parent="VBox/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Vbox" type="VBoxContainer" parent="VBox/TabContainer/ClientTab"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ServerIPLabel" type="Label" parent="VBox/TabContainer/ClientTab/Vbox"]
+margin_right = 966.0
+margin_bottom = 14.0
+text = "Server IP:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hbox" type="HBoxContainer" parent="VBox/TabContainer/ClientTab/Vbox"]
+margin_top = 18.0
+margin_right = 966.0
+margin_bottom = 38.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ServerIPInput" type="TextEdit" parent="VBox/TabContainer/ClientTab/Vbox/Hbox"]
+margin_right = 898.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConnectButton" type="Button" parent="VBox/TabContainer/ClientTab/Vbox/Hbox"]
+margin_left = 902.0
+margin_right = 966.0
+margin_bottom = 20.0
+text = "Connect"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="VBox/TabContainer/ServerTab/Vbox/Refresh" to="VBox/TabContainer/ServerTab/Vbox/IpAddressLabel" method="refresh_ips"]
+[connection signal="text_changed" from="VBox/TabContainer/ClientTab/Vbox/Hbox/ServerIPInput" to="." method="_on_TextEdit_text_changed"]
+[connection signal="pressed" from="VBox/TabContainer/ClientTab/Vbox/Hbox/ConnectButton" to="." method="_on_ConnectButton_pressed"]

@@ -34,6 +34,10 @@ func _input(event):
 			placing_obj.position = placement_ghost.position
 			placing_obj.rotation = placement_ghost.rotation
 			add_child(placing_obj)
+			for child in placement_ghost.bodies:
+				print("removing...")
+				print(child)
+				child.queue_free()
 				
 		elif event.button_index == BUTTON_RIGHT:
 			if object_selected == placing_modes.BANANA:
@@ -64,7 +68,7 @@ func _produce(Item, position, rotation):
 	add_child(placing_obj)
 
 func _on_Consumer_consume(body):
-	remove_child(body)
+	body.queue_free()
 	money += 1
 	
 func _process(delta):

@@ -4,13 +4,16 @@
 [ext_resource path="res://Objects/Cosumer/ConsumerTop.png" type="Texture" id=2]
 [ext_resource path="res://Objects/Cosumer/ConsumerFull.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5.69586, 64 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 32, 64 )
 
 [node name="Consumer" type="RigidBody2D"]
+collision_layer = 3
+collision_mask = 3
+mode = 1
 mass = 10.6592
 gravity_scale = 0.0
 linear_damp = 10.0
@@ -27,17 +30,17 @@ texture = ExtResource( 3 )
 
 [node name="Left" type="CollisionShape2D" parent="."]
 position = Vector2( -55.7662, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Top" type="CollisionShape2D" parent="."]
 position = Vector2( 0.966064, -57.1156 )
 rotation = 1.57079
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Bottom" type="CollisionShape2D" parent="."]
 position = Vector2( 0.966064, 57.1156 )
 rotation = 1.57079
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
 editor/display_folded = true

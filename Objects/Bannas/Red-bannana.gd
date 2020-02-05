@@ -10,3 +10,6 @@ func _on_Timer_timeout():
 			body.apply_central_impulse(blow_up_dir)
 		
 	emit_signal("blow_up", self)
+
+func _on_FireTimer_timeout():
+	$Particles2D.emitting = true
