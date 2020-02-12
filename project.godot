@@ -19,6 +19,10 @@ config/name="factorio-clone"
 run/main_scene="res://Objects/MainMenu.tscn"
 config/icon="res://Objects/ConveyerBelt/icon.png"
 
+[autoload]
+
+GlobalState="*res://Objects/GlobalState/GlobalState.gd"
+
 [input]
 
 ui_left={

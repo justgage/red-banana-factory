@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Objects/Lobby/ServerManager.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Lobby/Lobby.gd" type="Script" id=2]
+[ext_resource path="res://Objects/Lobby/ChatItems.gd" type="Script" id=3]
+[ext_resource path="res://Objects/Lobby/Chat.gd" type="Script" id=4]
 
 [node name="Window" type="PanelContainer"]
 anchor_right = 1.0
@@ -26,9 +28,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NameHbox" type="HBoxContainer" parent="LobbyUI/VBox"]
+[node name="TitleH" type="HBoxContainer" parent="LobbyUI/VBox"]
 margin_right = 1010.0
+margin_bottom = 47.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="PageTitle" type="Label" parent="LobbyUI/VBox/TitleH"]
+margin_top = 16.0
+margin_right = 923.0
 margin_bottom = 30.0
+size_flags_horizontal = 3
+text = "MULTIPLAYER LOBBY"
+
+[node name="Button" type="Button" parent="LobbyUI/VBox/TitleH"]
+margin_left = 927.0
+margin_right = 1010.0
+margin_bottom = 47.0
+text = "Start Game"
+
+[node name="NameHbox" type="HBoxContainer" parent="LobbyUI/VBox"]
+margin_top = 51.0
+margin_right = 1010.0
+margin_bottom = 81.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="Label" type="Label" parent="LobbyUI/VBox/NameHbox"]
@@ -39,24 +61,30 @@ text = "username:"
 
 [node name="NameEdit" type="TextEdit" parent="LobbyUI/VBox/NameHbox"]
 margin_left = 72.0
-margin_right = 1010.0
+margin_right = 923.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
 text = "Leyroy Jenkins"
 
-[node name="ConnectedStatus" type="Label" parent="LobbyUI/VBox"]
-margin_top = 34.0
+[node name="RandomizeButton" type="Button" parent="LobbyUI/VBox/NameHbox"]
+margin_left = 927.0
 margin_right = 1010.0
-margin_bottom = 48.0
+margin_bottom = 30.0
+text = "Randomize"
+
+[node name="ConnectedStatus" type="Label" parent="LobbyUI/VBox"]
+margin_top = 85.0
+margin_right = 1010.0
+margin_bottom = 99.0
 text = "Not Connected."
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TabContainer" type="TabContainer" parent="LobbyUI/VBox"]
-margin_top = 52.0
+margin_top = 103.0
 margin_right = 1010.0
-margin_bottom = 317.0
+margin_bottom = 342.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -80,7 +108,7 @@ __meta__ = {
 
 [node name="Left" type="VBoxContainer" parent="LobbyUI/VBox/TabContainer/ServerTab/Hbox"]
 margin_right = 1002.0
-margin_bottom = 229.0
+margin_bottom = 203.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
@@ -100,29 +128,29 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="LobbyUI/VBox/TabContainer/ServerTab/Hbox/Left"]
 margin_top = 35.0
 margin_right = 1002.0
-margin_bottom = 181.0
+margin_bottom = 155.0
 size_flags_vertical = 3
 
 [node name="AddressesContainer" type="VBoxContainer" parent="LobbyUI/VBox/TabContainer/ServerTab/Hbox/Left/ScrollContainer"]
-margin_bottom = 146.0
+margin_bottom = 120.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Refresh" type="Button" parent="LobbyUI/VBox/TabContainer/ServerTab/Hbox/Left"]
-margin_top = 185.0
+margin_top = 159.0
 margin_right = 1002.0
-margin_bottom = 205.0
+margin_bottom = 179.0
 text = "Refresh"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HostServer" type="Button" parent="LobbyUI/VBox/TabContainer/ServerTab/Hbox/Left"]
-margin_top = 209.0
+margin_top = 183.0
 margin_right = 1002.0
-margin_bottom = 229.0
+margin_bottom = 203.0
 text = "Host Server"
 
 [node name="ClientTab" type="Tabs" parent="LobbyUI/VBox/TabContainer"]
@@ -177,32 +205,85 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Player List" type="VBoxContainer" parent="LobbyUI/VBox"]
-margin_top = 321.0
+[node name="BottomHalf" type="HBoxContainer" parent="LobbyUI/VBox"]
+margin_top = 346.0
 margin_right = 1010.0
 margin_bottom = 586.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Players Title" type="Label" parent="LobbyUI/VBox/Player List"]
-margin_right = 1010.0
-margin_bottom = 31.0
-text = "Players
-"
-
-[node name="Players" type="VBoxContainer" parent="LobbyUI/VBox/Player List"]
-margin_top = 35.0
-margin_right = 1010.0
-margin_bottom = 265.0
+[node name="Player List" type="VBoxContainer" parent="LobbyUI/VBox/BottomHalf"]
+margin_right = 503.0
+margin_bottom = 240.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Players Title" type="Label" parent="LobbyUI/VBox/BottomHalf/Player List"]
+margin_right = 503.0
+margin_bottom = 14.0
+text = "Players"
+
+[node name="Players" type="VBoxContainer" parent="LobbyUI/VBox/BottomHalf/Player List"]
+margin_top = 18.0
+margin_right = 503.0
+margin_bottom = 240.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Chat" type="VBoxContainer" parent="LobbyUI/VBox/BottomHalf"]
+margin_left = 507.0
+margin_right = 1010.0
+margin_bottom = 240.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="ChatTitle" type="Label" parent="LobbyUI/VBox/BottomHalf/Chat"]
+margin_right = 503.0
+margin_bottom = 14.0
+text = "Chat:"
+
+[node name="ChatScrollBox" type="ScrollContainer" parent="LobbyUI/VBox/BottomHalf/Chat"]
+margin_top = 18.0
+margin_right = 503.0
+margin_bottom = 176.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ChatItems" type="VBoxContainer" parent="LobbyUI/VBox/BottomHalf/Chat/ChatScrollBox"]
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LobbyUI/VBox/BottomHalf/Chat"]
+margin_top = 180.0
+margin_right = 503.0
+margin_bottom = 240.0
+size_flags_horizontal = 3
+
+[node name="MessageBox" type="TextEdit" parent="LobbyUI/VBox/BottomHalf/Chat/HBoxContainer"]
+margin_right = 456.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 0, 60 )
+size_flags_horizontal = 3
+wrap_enabled = true
+
+[node name="SendButton" type="Button" parent="LobbyUI/VBox/BottomHalf/Chat/HBoxContainer"]
+margin_left = 460.0
+margin_right = 503.0
+margin_bottom = 60.0
+text = "Send"
 
 [node name="Timer" type="Timer" parent="LobbyUI"]
 wait_time = 5.0
 autostart = true
 [connection signal="text_changed" from="LobbyUI/VBox/NameHbox/NameEdit" to="LobbyUI" method="_on_NameEdit_text_changed"]
+[connection signal="pressed" from="LobbyUI/VBox/NameHbox/RandomizeButton" to="LobbyUI" method="randomize_name"]
 [connection signal="pressed" from="LobbyUI/VBox/TabContainer/ServerTab/Hbox/Left/Refresh" to="LobbyUI/VBox/TabContainer/ServerTab/Hbox/Left/IpAddressLabel" method="refresh_ips"]
 [connection signal="pressed" from="LobbyUI/VBox/TabContainer/ServerTab/Hbox/Left/HostServer" to="LobbyUI" method="_on_HostServer_pressed"]
 [connection signal="text_changed" from="LobbyUI/VBox/TabContainer/ClientTab/Vbox/Hbox/ServerIPInput" to="LobbyUI" method="_on_ServerIPInput_text_changed"]
 [connection signal="pressed" from="LobbyUI/VBox/TabContainer/ClientTab/Vbox/Hbox/ConnectButton" to="LobbyUI" method="_on_ConnectButton_pressed"]
+[connection signal="text_changed" from="LobbyUI/VBox/BottomHalf/Chat/HBoxContainer/MessageBox" to="LobbyUI/VBox/BottomHalf/Chat" method="_on_MessageBox_text_changed"]
+[connection signal="pressed" from="LobbyUI/VBox/BottomHalf/Chat/HBoxContainer/SendButton" to="LobbyUI/VBox/BottomHalf/Chat" method="_on_SendButton_pressed"]
 [connection signal="timeout" from="LobbyUI/Timer" to="LobbyUI" method="_on_Timer_timeout"]
