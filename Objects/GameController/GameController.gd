@@ -73,7 +73,7 @@ func _on_Consumer_consume(body):
 	money += 1
 	
 func _process(delta):
-	$Camera2D/Money.text = "Money: " + String(money)
+	$CanvasLayer/PanelContainer/Money.text = "Money: " + String(money)
 	
 func remove_obj(obj):
 	remove_child(obj)

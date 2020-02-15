@@ -43,9 +43,10 @@ rotation = 1.57079
 shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( -7.28321, -7.62939e-06 )
 scale = Vector2( 0.600001, 0.72 )
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -32, 0 )
