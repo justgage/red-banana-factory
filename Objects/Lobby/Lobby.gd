@@ -44,7 +44,6 @@ func _connected_fail():
 
 remote func register_player(info):
 	var id = get_tree().get_rpc_sender_id()
-	print("player registered")	
 	global_state.player_info[id] = info
 	refresh_player_list()
 
@@ -64,7 +63,6 @@ func start_server():
 	register_player(my_info)
 
 func start_client():
-	print("creating client")
 	var peer = NetworkedMultiplayerENet.new()
 	peer.create_client(server_ip, SERVER_PORT)
 	get_tree().set_network_peer(peer)
@@ -77,9 +75,6 @@ func randomize_name():
 	var last_name = last_names[randi() % 4]
 	var new_name = first_name + " " + last_name
 	print_debug("Picking out a random name")
-	print(first_name)
-	print(last_name)
-	print(new_name)
 	set_name(new_name)
 	
 func set_name(name):
@@ -108,3 +103,7 @@ func _on_Timer_timeout():
 
 func _on_ServerIPInput_text_changed():
 	server_ip = $VBox/TabContainer/ClientTab/Vbox/Hbox/ServerIPInput.text
+
+
+func _on_PlayButton_pressed():
+	get_tree().change_scene("res://Objects/GameController/GameController.scn")

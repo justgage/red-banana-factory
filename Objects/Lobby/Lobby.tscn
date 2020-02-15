@@ -41,7 +41,7 @@ margin_bottom = 30.0
 size_flags_horizontal = 3
 text = "MULTIPLAYER LOBBY"
 
-[node name="Button" type="Button" parent="LobbyUI/VBox/TitleH"]
+[node name="PlayButton" type="Button" parent="LobbyUI/VBox/TitleH"]
 margin_left = 927.0
 margin_right = 1010.0
 margin_bottom = 47.0
@@ -278,6 +278,7 @@ text = "Send"
 [node name="Timer" type="Timer" parent="LobbyUI"]
 wait_time = 5.0
 autostart = true
+[connection signal="pressed" from="LobbyUI/VBox/TitleH/PlayButton" to="LobbyUI" method="_on_PlayButton_pressed"]
 [connection signal="text_changed" from="LobbyUI/VBox/NameHbox/NameEdit" to="LobbyUI" method="_on_NameEdit_text_changed"]
 [connection signal="pressed" from="LobbyUI/VBox/NameHbox/RandomizeButton" to="LobbyUI" method="randomize_name"]
 [connection signal="pressed" from="LobbyUI/VBox/TabContainer/ServerTab/Hbox/Left/Refresh" to="LobbyUI/VBox/TabContainer/ServerTab/Hbox/Left/IpAddressLabel" method="refresh_ips"]
