@@ -6,9 +6,9 @@ See the Releases page to download: https://github.com/justgage/red-banana-factor
 
 ## Controls:
 
-WASD - Move the camera
-Right Click - Change Item you place
-Left Click - Place Item
-R - Rotate piece
+* WASD - Move the camera
+* Right Click - Change Item you place
+* Left Click - Place Item
+* R - Rotate piece
 
 ![factory-image](https://user-images.githubusercontent.com/164033/74605428-4a8f5000-5085-11ea-8379-0646c0a2c4be.gif)
