@@ -1,4 +1,4 @@
-extends Node2D
+extends RigidBody2D
 
 var Item = load("res://Objects/Bannas/Red-bannana.tscn");
 

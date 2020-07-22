@@ -1,14 +1,39 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Objects/Producer/Producer.gd" type="Script" id=1]
 [ext_resource path="res://Objects/ConveyerBelt/conveyer-belt.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/Producer/producer-top.png" type="Texture" id=3]
 
-[node name="Producer" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9.33124, 64 )
+
+[node name="RigidBody2D" type="RigidBody2D"]
+collision_layer = 3
+collision_mask = 3
+mode = 1
+mass = 10.0
+gravity_scale = 0.0
+sleeping = true
 script = ExtResource( 1 )
 
+[node name="BACK" type="CollisionShape2D" parent="."]
+position = Vector2( -55, 0 )
+z_index = 2
+shape = SubResource( 1 )
+
+[node name="TOP" type="CollisionShape2D" parent="."]
+position = Vector2( 0.836761, -55.2946 )
+rotation = 1.57079
+z_index = 2
+shape = SubResource( 1 )
+
+[node name="BOTTOM" type="CollisionShape2D" parent="."]
+position = Vector2( 0.836761, 52.5842 )
+rotation = 1.57079
+z_index = 2
+shape = SubResource( 1 )
+
 [node name="conveyer-belt" parent="." instance=ExtResource( 2 )]
-collision_mask = 3
 
 [node name="ProducerTop" type="Sprite" parent="."]
 z_index = 1
@@ -17,4 +42,6 @@ texture = ExtResource( 3 )
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="Producer" type="Node2D" parent="."]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
